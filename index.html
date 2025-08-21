@@ -124,8 +124,8 @@
       const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // ----- TUNE: số lượng sao & behavior -----
-      const STAR_COUNT_DESKTOP = 420;
-      const STAR_COUNT_MOBILE  = 180;
+      const STAR_COUNT_DESKTOP = 1320;
+      const STAR_COUNT_MOBILE  = 950;
       const STAR_COUNT = reduced ? Math.round((isMobile ? STAR_COUNT_MOBILE : STAR_COUNT_DESKTOP) * 0.45)
                                  : (isMobile ? STAR_COUNT_MOBILE : STAR_COUNT_DESKTOP);
 
