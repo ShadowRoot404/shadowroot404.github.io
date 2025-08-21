@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ShadowRoot404 | Trang Web Cá Nhân Của Hoàng Tiến Minh</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,6 +14,7 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -44,7 +46,31 @@
       color: #aaa;
     }
 
-    /* 🌠 Ngôi sao tĩnh lấp lánh */
+    /* ===== Starfield container: rotate like Earth ===== */
+    .starfield {
+      position: fixed;
+      /* make it larger so rotation doesn't show edges */
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      pointer-events: none;
+      z-index: -1;
+      transform-origin: 50% 50%;
+      animation: rotateSky 300s linear infinite; /* change duration to control rotation speed */
+    }
+
+    @keyframes rotateSky {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* disable rotation if user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .starfield { animation: none !important; }
+    }
+
+    /* 🌠 Ngôi sao tĩnh lấp lánh (inside starfield) */
     .star {
       position: absolute;
       width: 2px;
@@ -53,22 +79,24 @@
       border-radius: 50%;
       opacity: 0.8;
       animation: twinkle 2s infinite alternate;
+      will-change: transform, opacity;
     }
 
     @keyframes twinkle {
-      from { opacity: 0.2; transform: scale(1); }
-      to   { opacity: 1;   transform: scale(1.5); }
+      from { opacity: 0.15; transform: scale(1); }
+      to   { opacity: 1; transform: scale(1.6); }
     }
 
-    /* 💫 Sao băng */
+    /* 💫 Sao băng (inside starfield) */
     .shooting-star {
       position: absolute;
       width: 2px;
       height: 80px;
       background: linear-gradient(-45deg, white, rgba(255,255,255,0));
-      opacity: 0.8;
+      opacity: 0.9;
       transform: rotate(45deg);
       animation: fall 2s linear;
+      will-change: transform, opacity;
     }
 
     @keyframes fall {
@@ -81,45 +109,83 @@
         opacity: 0;
       }
     }
+
+    /* responsiveness small tweaks */
+    @media (max-width:720px) {
+      h1 { margin-top: 60px; font-size: 2rem; }
+      .contact { font-size: 1rem; padding: 12px; }
+    }
   </style>
 </head>
 <body>
+  <!-- Starfield container sẽ xoay bằng CSS -->
+  <div class="starfield" aria-hidden="true"></div>
+
   <h1>🌌 Chào Mừng Đến Với Website Của ShadowRoot404</h1>
   <p>Website Cá Nhân Của Tôi - Nơi Để Chúng Ta Chia Sẻ Và Kết Nối Với Nhau :) 🚀</p>
 
   <div class="contact">
     📧 Email: <a href="mailto:sh4d0wr00t404@gmail.com" style="color: #4fc3f7;">sh4d0wr00t404@gmail.com</a><br>
     📱 Phone: <a href="tel:0899403081" style="color: #4fc3f7;">0899403081</a><br>
-    🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" style="color: #4fc3f7;">Hoàng Tiến Minh</a>
+    🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" rel="noopener noreferrer" style="color: #4fc3f7;">Hoàng Tiến Minh</a>
   </div>
 
   <footer>© 2025 Shadowroot404. All rights reserved.</footer>
 
   <script>
-    // 🌟 Tạo ngôi sao tĩnh lấp lánh
-    for (let i = 0; i < 80; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      star.style.top = Math.random() * window.innerHeight + "px";
-      star.style.left = Math.random() * window.innerWidth + "px";
-      star.style.animationDelay = Math.random() * 2 + "s";
-      document.body.appendChild(star);
-    }
+    /* Dựa trên mã của bạn: tạo ngôi sao và sao băng nhưng chèn vào .starfield
+       Rotation được xử lý bằng CSS trên .starfield (không cần JS)
+    */
+    (function() {
+      const starfield = document.querySelector('.starfield');
+      const W = window.innerWidth;
+      const H = window.innerHeight;
 
-    // 💫 Hàm tạo sao băng
-    function createShootingStar() {
-      const star = document.createElement("div");
-      star.classList.add("shooting-star");
-      document.body.appendChild(star);
+      // tạo ngôi sao tĩnh lấp lánh
+      const STAR_COUNT = 100; // tăng/giảm tuỳ bạn
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        // đặt vị trí trong viewport (đối với starfield lớn top/left âm, vẫn ok)
+        const x = Math.random() * W;
+        const y = Math.random() * H;
+        star.style.left = (x) + 'px';
+        star.style.top = (y) + 'px';
+        star.style.animationDelay = (Math.random() * 2) + 's';
+        // ngẫu nhiên kích thước / opacity
+        const scale = (Math.random() * 1.8 + 0.2);
+        star.style.transform = `scale(${scale})`;
+        star.style.opacity = (0.2 + Math.random() * 0.8);
+        starfield.appendChild(star);
+      }
 
-      star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
-      star.style.left = Math.random() * window.innerWidth + "px";
+      // hàm tạo sao băng, appended vào starfield
+      function createShootingStar() {
+        const s = document.createElement('div');
+        s.className = 'shooting-star';
+        // chọn vị trí khởi đầu ở nửa trên màn hình
+        const left = Math.random() * W;
+        const top = Math.random() * H * 0.4; // chỉ ở nửa trên
+        s.style.left = left + 'px';
+        s.style.top = top + 'px';
+        starfield.appendChild(s);
+        // remove sau animation
+        setTimeout(() => s.remove(), 2000);
+      }
 
-      setTimeout(() => { star.remove(); }, 2000);
-    }
+      // spawn sao băng thưa
+      setInterval(() => {
+        // nếu người dùng prefer reduced motion thì giảm spawn
+        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced && Math.random() > 0.25) return;
+        if (Math.random() < 0.12) createShootingStar();
+      }, 800);
 
-    // Tạo sao băng liên tục
-    setInterval(createShootingStar, 800);
+      // Nếu resize, không cần reposition stars (ok), nhưng bạn có thể reload nếu muốn
+      window.addEventListener('resize', () => {
+        // (tùy chọn) không làm gì để giữ nguyên vị trí hiện tại
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
