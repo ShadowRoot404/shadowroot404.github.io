@@ -1,336 +1,125 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shadowroot404 | Hoàng Tiến Minh</title>
+  <meta charset="UTF-8">
+  <title>ShadowRoot404 | Trang Web Cá Nhân Của Hoàng Tiến Minh</title>
   <style>
-    /* Full-screen canvas background */
-    html,body {
-      height: 100%;
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: #02030a;
-      color: #eaf2ff;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
     }
 
-    canvas#starfield {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      z-index: -1;          /* behind content */
-      pointer-events: none; /* allow clicks through canvas */
+    h1 {
+      margin-top: 100px;
+      font-size: 3rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
     }
 
-    /* Center container */
-    .wrap {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      box-sizing: border-box;
-    }
-
-    /* Glass card for content */
-    .card {
-      width: 100%;
-      max-width: 920px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-      text-align: left;
-      color: #e6eefc;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.1rem;
-      letter-spacing: .6px;
-      color: #dffcff;
-    }
-
-    header p.lead {
-      margin: 8px 0 18px;
-      color: #bcd7ff;
-      opacity: .95;
+    p {
+      margin-top: 15px;
+      font-size: 1.2rem;
     }
 
     .contact {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 12px;
       display: inline-block;
-      background: rgba(255,255,255,0.02);
-      padding: 14px 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.03);
-      color: #dffcff;
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-
-    .contact a {
-      color: #8fe9ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .meta {
-      margin-top: 18px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .btn {
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:8px;
-      background: linear-gradient(90deg,#00e676,#00b894);
-      color:#05130b;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow: 0 6px 18px rgba(0,200,120,0.12);
+      line-height: 1.8;
     }
 
     footer {
-      margin-top: 18px;
-      color: #9fb7d6;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
       font-size: 0.9rem;
+      color: #aaa;
     }
 
-    @media (max-width:720px) {
-      .card { padding: 18px; border-radius: 12px; }
-      header h1 { font-size: 1.6rem; }
-      .contact { font-size: 0.95rem; }
+    /* 🌠 Ngôi sao tĩnh lấp lánh */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(1); }
+      to   { opacity: 1;   transform: scale(1.5); }
+    }
+
+    /* 💫 Sao băng */
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(-45deg, white, rgba(255,255,255,0));
+      opacity: 0.8;
+      transform: rotate(45deg);
+      animation: fall 2s linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-200px) translateX(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(800px) translateX(-800px) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
+  <h1>🌌 Chào Mừng Đến Với Website Của ShadowRoot404</h1>
+  <p>Website Cá Nhân Của Tôi - Nơi Để Chúng Ta Chia Sẻ Và Kết Nối Với Nhau :) 🚀</p>
 
-  <div class="wrap">
-    <div class="card" role="main">
-      <header>
-        <h1>🌌 Shadowroot404 — Hoàng Tiến Minh</h1>
-        <p class="lead">Website cá nhân — nơi mình ghi chép về Linux, bảo mật, và mấy project nhỏ. Chào bạn!</p>
-      </header>
-
-      <div class="meta">
-        <div class="contact" aria-label="Thông tin liên hệ">
-          📧 Email: <a href="mailto:sh4d0wr00t404@gmail.com">sh4d0wr00t404@gmail.com</a><br>
-          📱 Phone: <a href="tel:0899403081">0899403081</a><br>
-          🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" rel="noopener">Hoàng Tiến Minh</a>
-        </div>
-
-        <div style="margin-left:auto">
-          <a class="btn" href="#projects" title="Xem dự án">Xem dự án</a>
-        </div>
-      </div>
-
-      <footer>
-        © <span id="year"></span> Shadowroot404. Host on GitHub Pages.
-      </footer>
-    </div>
+  <div class="contact">
+    📧 Email: <a href="mailto:sh4d0wr00t404@gmail.com" style="color: #4fc3f7;">sh4d0wr00t404@gmail.com</a><br>
+    📱 Phone: <a href="tel:0899403081" style="color: #4fc3f7;">0899403081</a><br>
+    🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" style="color: #4fc3f7;">Hoàng Tiến Minh</a>
   </div>
 
+  <footer>© 2025 Shadowroot404. All rights reserved.</footer>
+
   <script>
-  /* ---------------------------
-     Starfield canvas implementation
-     - realistic twinkle using sinusoidal modulation
-     - glow via radial gradients
-     - parallax effect on mouse move
-     - lightweight shooting stars
-     --------------------------- */
-
-  (function () {
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d', { alpha: true });
-
-    let width = 0, height = 0, DPR = Math.max(1, window.devicePixelRatio || 1);
-    let stars = [], shooting = [];
-    const STAR_COUNT_DESKTOP = 320;
-    const STAR_COUNT_MOBILE  = 120;
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      canvas.width = Math.round(width * DPR);
-      canvas.height = Math.round(height * DPR);
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      initStars();
+    // 🌟 Tạo ngôi sao tĩnh lấp lánh
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(star);
     }
 
-    function rand(min, max) { return Math.random() * (max - min) + min; }
+    // 💫 Hàm tạo sao băng
+    function createShootingStar() {
+      const star = document.createElement("div");
+      star.classList.add("shooting-star");
+      document.body.appendChild(star);
 
-    function initStars() {
-      const count = isMobile ? STAR_COUNT_MOBILE : STAR_COUNT_DESKTOP;
-      stars = new Array(count).fill().map(() => {
-        const r = Math.random();
-        return {
-          x: Math.random() * width,
-          y: Math.random() * height,
-          size: rand(0.4, 1.8) * (r < .15 ? 2.2 : 1), // some bigger stars
-          baseAlpha: rand(0.2, 0.9),
-          twinkleSpeed: rand(0.5, 2.2),
-          twinklePhase: Math.random() * Math.PI * 2,
-          twinkleRange: rand(0.15, 0.75),
-          hueShift: rand(-20, 20), // slight warm/cool tint
-          freeze: Math.random() < 0.015 // a few static bright stars
-        };
-      });
+      star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+
+      setTimeout(() => { star.remove(); }, 2000);
     }
 
-    // Shooting star spawn
-    function spawnShootingStar() {
-      // start near top-right quadrant, go diagonal down-left
-      const startX = rand(width * 0.6, width * 1.1);
-      const startY = rand(-80, height * 0.2);
-      const speed = rand(800, 1400); // px / second
-      const len = rand(120, 420);
-      shooting.push({
-        x: startX,
-        y: startY,
-        vx: -speed * (Math.random()*0.15 + 0.85) / 60,
-        vy: speed * (Math.random()*0.15 + 0.85) / 100,
-        life: 0,
-        maxLife: rand(0.9, 1.6),
-        len
-      });
-      // occasionally spawn pairs
-      if (Math.random() < 0.25) {
-        setTimeout(spawnShootingStar, rand(200, 700));
-      }
-    }
-
-    // Parallax by mouse
-    const parallax = { x: 0, y: 0, tx: 0, ty: 0 };
-    window.addEventListener('mousemove', (e) => {
-      parallax.tx = (e.clientX / width - 0.5) * 40; // px shift
-      parallax.ty = (e.clientY / height - 0.5) * 20;
-    });
-
-    // Animation loop
-    let last = performance.now();
-    function frame(now) {
-      const dt = (now - last) / 1000;
-      last = now;
-
-      // smooth parallax
-      parallax.x += (parallax.tx - parallax.x) * Math.min(0.12, dt*8);
-      parallax.y += (parallax.ty - parallax.y) * Math.min(0.12, dt*8);
-
-      // clear
-      ctx.clearRect(0, 0, width, height);
-      // draw faint nebula / vignette
-      drawBackgroundGradient();
-
-      // draw stars
-      for (let i=0;i<stars.length;i++){
-        const s = stars[i];
-        // twinkle: base + sin(time*speed + phase) * range
-        let t = now * 0.001 * s.twinkleSpeed + s.twinklePhase;
-        let alpha = s.freeze ? s.baseAlpha : (s.baseAlpha + Math.sin(t) * s.twinkleRange * 0.6);
-        alpha = Math.max(0, Math.min(1, alpha));
-
-        // position with parallax offset (subtle)
-        const px = s.x + parallax.x * (s.size/2);
-        const py = s.y + parallax.y * (s.size/2);
-
-        // draw glow via radial gradient
-        const g = ctx.createRadialGradient(px, py, 0, px, py, 8 * s.size);
-        // tint slightly by hueShift for natural color variance
-        const hue = 200 + s.hueShift; // bluish base
-        g.addColorStop(0, `rgba(${Math.floor(240 + s.hueShift)},${Math.floor(245 + s.hueShift)},255,${alpha})`);
-        g.addColorStop(0.4, `rgba(220,230,255,${alpha * 0.6})`);
-        g.addColorStop(1, `rgba(200,210,230,${alpha * 0.02})`);
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(px, py, s.size * 3.6, 0, Math.PI * 2);
-        ctx.fill();
-
-        // central bright dot
-        ctx.fillStyle = `rgba(255,255,255,${Math.min(1, alpha*1.2)})`;
-        ctx.beginPath();
-        ctx.arc(px, py, Math.max(0.25, s.size * 0.7), 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // update and draw shooting stars (trails)
-      for (let i = shooting.length - 1; i >= 0; i--) {
-        const st = shooting[i];
-        st.life += dt;
-        const progress = st.life / st.maxLife;
-
-        // position update
-        st.x += st.vx * dt * 60; // adjust velocity scale
-        st.y += st.vy * dt * 60;
-
-        // draw trail: gradient line
-        ctx.save();
-        const grad = ctx.createLinearGradient(st.x, st.y, st.x - st.vx*0.5, st.y - st.vy*0.5);
-        const falloff = Math.max(0, 1 - progress);
-        grad.addColorStop(0, `rgba(255,255,255,${0.95 * falloff})`);
-        grad.addColorStop(0.6, `rgba(180,220,255,${0.25 * falloff})`);
-        grad.addColorStop(1, `rgba(180,220,255,0)`);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = Math.max(1, st.len/60);
-        ctx.beginPath();
-        ctx.moveTo(st.x, st.y);
-        ctx.lineTo(st.x - st.vx * st.len * 0.03, st.y - st.vy * st.len * 0.03);
-        ctx.stroke();
-
-        // head glow
-        ctx.fillStyle = `rgba(255,255,255,${0.9 * falloff})`;
-        ctx.beginPath();
-        ctx.arc(st.x - st.vx*0.015, st.y - st.vy*0.015, Math.max(1.8, st.len/120), 0, Math.PI*2);
-        ctx.fill();
-
-        ctx.restore();
-
-        if (st.life > st.maxLife) shooting.splice(i, 1);
-      }
-
-      // occasionally spawn shooting star
-      if (Math.random() < 0.006) spawnShootingStar();
-
-      requestAnimationFrame(frame);
-    }
-
-    function drawBackgroundGradient() {
-      // subtle dark-blue vignette + nebula touch
-      const g = ctx.createLinearGradient(width/2, 0, width/2, height);
-      g.addColorStop(0, 'rgba(10,18,30,0.08)');
-      g.addColorStop(0.6, 'rgba(5,8,15,0.25)');
-      g.addColorStop(1, 'rgba(2,3,6,0.6)');
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, width, height);
-    }
-
-    // initialize
-    resize();
-    window.addEventListener('resize', resize);
-    requestAnimationFrame(frame);
-
-    // slight responsive tuning: spawn fewer stars on small screens
-    // start a few shooting stars on init
-    setTimeout(() => { for (let i=0;i<2;i++) spawnShootingStar(); }, 600);
-
-    // Expose for debug (optional)
-    window.__starfield = { stars, spawnShootingStar };
-
-  })();
-
-  // small UI bits
-  document.getElementById('year').textContent = new Date().getFullYear();
+    // Tạo sao băng liên tục
+    setInterval(createShootingStar, 800);
   </script>
 </body>
 </html>
