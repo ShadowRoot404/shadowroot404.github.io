@@ -1,125 +1,319 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>ShadowRoot404 | Trang Web Cá Nhân Của Hoàng Tiến Minh</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShadowRoot404 | Hoàng Tiến Minh</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ======= Layout & Card (giữ nguyên bố cục bạn thích) ======= */
+    html,body { height:100%; margin:0; font-family:Inter, Arial, Helvetica, sans-serif; background:#02030a; color:#eaf2ff; }
+    a { color:inherit; }
+    canvas#starfield { position:fixed; inset:0; width:100%; height:100%; display:block; z-index:-1; pointer-events:none; }
+    .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:28px; box-sizing:border-box; }
+    .card { width:100%; max-width:920px; background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.06); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); padding:28px; border-radius:14px; box-shadow:0 10px 30px rgba(2,6,23,0.6); text-align:left; color:#e6eefc; }
+    header h1 { margin:0; font-size:2.1rem; letter-spacing:.6px; color:#dffcff; }
+    header p.lead { margin:8px 0 18px; color:#bcd7ff; opacity:.95; }
+    .contact { display:inline-block; background:rgba(255,255,255,0.02); padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); color:#dffcff; font-size:.98rem; line-height:1.6; }
+    .contact a { color:#8fe9ff; text-decoration:none; font-weight:600; }
+    .meta { margin-top:18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,#00e676,#00b894); color:#05130b; font-weight:700; text-decoration:none; box-shadow:0 6px 18px rgba(0,200,120,0.12); }
+    footer { margin-top:18px; color:#9fb7d6; font-size:.9rem; }
+    @media (max-width:720px) { .card{padding:18px;border-radius:12px} header h1{font-size:1.6rem} .contact{font-size:.95rem} }
 
-    body {
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      height: 100vh;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-    }
+    /* accessibility focus */
+    a:focus { outline:3px solid rgba(143,233,255,0.26); outline-offset:3px; border-radius:6px; }
 
-    h1 {
-      margin-top: 100px;
-      font-size: 3rem;
-      text-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
-
-    p {
-      margin-top: 15px;
-      font-size: 1.2rem;
-    }
-
-    .contact {
-      margin-top: 40px;
-      font-size: 1.1rem;
-      background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 12px;
-      display: inline-block;
-      line-height: 1.8;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    /* 🌠 Ngôi sao tĩnh lấp lánh */
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite alternate;
-    }
-
-    @keyframes twinkle {
-      from { opacity: 0.2; transform: scale(1); }
-      to   { opacity: 1;   transform: scale(1.5); }
-    }
-
-    /* 💫 Sao băng */
-    .shooting-star {
-      position: absolute;
-      width: 2px;
-      height: 80px;
-      background: linear-gradient(-45deg, white, rgba(255,255,255,0));
-      opacity: 0.8;
-      transform: rotate(45deg);
-      animation: fall 2s linear;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-200px) translateX(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(800px) translateX(-800px) rotate(45deg);
-        opacity: 0;
-      }
-    }
+    /* noscript note */
+    .noscript-note { background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; color:#bcd7ff; margin-top:12px; }
   </style>
 </head>
 <body>
-  <h1>🌌 Chào Mừng Đến Với Website Của ShadowRoot404</h1>
-  <p>Website Cá Nhân Của Tôi - Nơi Để Chúng Ta Chia Sẻ Và Kết Nối Với Nhau :) 🚀</p>
+  <canvas id="starfield" aria-hidden="true"></canvas>
 
-  <div class="contact">
-    📧 Email: <a href="mailto:sh4d0wr00t404@gmail.com" style="color: #4fc3f7;">sh4d0wr00t404@gmail.com</a><br>
-    📱 Phone: <a href="tel:0899403081" style="color: #4fc3f7;">0899403081</a><br>
-    🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" style="color: #4fc3f7;">Hoàng Tiến Minh</a>
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="pageTitle">
+      <header>
+        <h1 id="pageTitle">🌌 Chào Mừng Đến Với Website Của ShadowRoot404</h1>
+        <p class="lead">Website Cá Nhân Của Tôi - Nơi Để Chúng Ta Chia Sẻ Và Kết Nối Với Nhau :) 🚀</p>
+      </header>
+
+      <div class="meta">
+        <div class="contact" aria-label="Thông Tin Liên Hệ">
+          📧 Email: <a href="mailto:sh4d0wr00t404@gmail.com">sh4d0wr00t404@gmail.com</a><br>
+          📱 Phone: <a href="tel:0899403081">0899403081</a><br>
+          🌐 Facebook: <a href="https://www.facebook.com/HoangTienMinh55555" target="_blank" rel="noopener noreferrer">Hoàng Tiến Minh</a>
+        </div>
+
+        <div style="margin-left:auto"><a class="btn" href="#projects" title="Xem dự án">Xem dự án</a></div>
+      </div>
+
+      <footer>© <span id="year"></span> ShadowRoot404. Host on GitHub Pages.</footer>
+
+    </main>
   </div>
 
-  <footer>© 2025 Shadowroot404. All rights reserved.</footer>
-
   <script>
-    // 🌟 Tạo ngôi sao tĩnh lấp lánh
-    for (let i = 0; i < 80; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      star.style.top = Math.random() * window.innerHeight + "px";
-      star.style.left = Math.random() * window.innerWidth + "px";
-      star.style.animationDelay = Math.random() * 2 + "s";
-      document.body.appendChild(star);
+  /*
+    Starfield with slow global rotation (like Earth turning)
+    - single canvas, stars stored in polar coords (r, theta)
+    - each star twinkles; a small per-star speed multiplier creates depth
+    - globalRotationSpeed controls how fast the whole sky turns (radians/sec)
+    - supports prefers-reduced-motion (disables rotation & reduces effects)
+    - optimized for mobile: fewer stars, reduced shooting stars
+  */
+
+  (function () {
+    'use strict';
+
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d', { alpha: true });
+
+    // CONFIG - bạn có thể tinh chỉnh
+    const CONFIG = {
+      STARS_DESKTOP: 320,
+      STARS_MOBILE: 110,
+      GLOBAL_ROTATION_SPEED: 0.0012, // radians per second (very slow) -> ~87min per full rotation
+      SHOOTING_CHANCE: 0.006,
+      SHOOTING_ON_MOBILE_FACTOR: 0.45,
+      TWINKLE_SPEED_MIN: 0.5,
+      TWINKLE_SPEED_MAX: 2.2
+    };
+
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let DPR = Math.max(1, window.devicePixelRatio || 1);
+    let width = 0, height = 0, cx = 0, cy = 0;
+    let stars = [], shooting = [];
+    let last = performance.now();
+    let globalAngle = 0; // global rotation angle applied to all stars
+
+    // Parallax small offset
+    const parallax = { tx: 0, ty: 0, x: 0, y: 0 };
+    let mouseThrottle = false;
+    function onPointerMove(e) {
+      if (prefersReduced) return;
+      const px = (e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || width/2) / width - 0.5;
+      const py = (e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY) || height/2) / height - 0.5;
+      parallax.tx = px * 30;
+      parallax.ty = py * 16;
+      if (!mouseThrottle) {
+        mouseThrottle = true;
+        requestAnimationFrame(() => { mouseThrottle = false; });
+      }
+    }
+    window.addEventListener('mousemove', onPointerMove, { passive: true });
+    window.addEventListener('touchmove', onPointerMove, { passive: true });
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    // initialize size & stars
+    function resize() {
+      DPR = Math.max(1, window.devicePixelRatio || 1);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      cx = width / 2;
+      cy = height / 2;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      canvas.width = Math.round(width * DPR);
+      canvas.height = Math.round(height * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      initStars();
     }
 
-    // 💫 Hàm tạo sao băng
-    function createShootingStar() {
-      const star = document.createElement("div");
-      star.classList.add("shooting-star");
-      document.body.appendChild(star);
-
-      star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
-      star.style.left = Math.random() * window.innerWidth + "px";
-
-      setTimeout(() => { star.remove(); }, 2000);
+    function initStars() {
+      const count = isMobile ? CONFIG.STARS_MOBILE : CONFIG.STARS_DESKTOP;
+      stars = new Array(count).fill(null).map(() => {
+        // polar distance from center (we want stars across full screen)
+        const maxR = Math.hypot(cx, cy); // farthest corner
+        const r = Math.sqrt(Math.random()) * maxR; // sqrt to bias more near center
+        return {
+          r,
+          theta: rand(0, Math.PI * 2),        // angular position
+          size: rand(0.3, 2.2),               // radius for drawing
+          baseAlpha: rand(0.12, 0.95),        // base brightness
+          twinkleSpeed: rand(CONFIG.TWINKLE_SPEED_MIN, CONFIG.TWINKLE_SPEED_MAX),
+          twinklePhase: Math.random() * Math.PI * 2,
+          twinkleRange: rand(0.12, 0.75),
+          speedMul: rand(0.92, 1.12),         // per-star speed multiplier: gives depth feel
+          hueShift: rand(-18, 18),
+          freeze: Math.random() < 0.015
+        };
+      });
     }
 
-    // Tạo sao băng liên tục
-    setInterval(createShootingStar, 800);
+    // spawn shooting star
+    function spawnShootingStar() {
+      if (prefersReduced && Math.random() > 0.2) return;
+      const startAngle = rand(-0.2, 0.8); // fraction of screen width (0..1 mapped later)
+      const startX = width * (0.6 + Math.random() * 0.4);
+      const startY = rand(-100, height * 0.28);
+      const speed = rand(900, 1500);
+      const len = rand(120, 420);
+      shooting.push({
+        x: startX,
+        y: startY,
+        vx: -speed * (Math.random() * 0.2 + 0.9) / 60,
+        vy: speed * (Math.random() * 0.2 + 0.9) / 100,
+        life: 0,
+        maxLife: rand(0.9, 1.6),
+        len
+      });
+      if (Math.random() < 0.18) setTimeout(spawnShootingStar, rand(200, 900));
+    }
+
+    function drawBackground() {
+      // subtle gradient base
+      const g = ctx.createLinearGradient(0, 0, 0, height);
+      g.addColorStop(0, 'rgba(6,10,20,0.06)');
+      g.addColorStop(0.6, 'rgba(3,5,10,0.25)');
+      g.addColorStop(1, 'rgba(2,3,6,0.65)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    function frame(now) {
+      const dt = Math.min(0.04, (now - last) / 1000); // safe dt (s)
+      last = now;
+
+      // rotate global angle (simulate Earth turning)
+      if (!prefersReduced) {
+        // global rotation scaled by speed and dt
+        globalAngle += CONFIG.GLOBAL_ROTATION_SPEED * dt;
+      }
+
+      // smooth parallax
+      parallax.x += (parallax.tx - parallax.x) * Math.min(0.12, dt * 8);
+      parallax.y += (parallax.ty - parallax.y) * Math.min(0.12, dt * 8);
+
+      ctx.clearRect(0, 0, width, height);
+      drawBackground();
+
+      // draw stars (using polar coords + globalAngle)
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+
+        // compute current angle: star.theta + globalAngle * speedMul
+        const angle = s.theta + globalAngle * s.speedMul;
+        const x = cx + s.r * Math.cos(angle) + parallax.x * (s.r / (Math.max(width, height))) * 12;
+        const y = cy + s.r * Math.sin(angle) + parallax.y * (s.r / (Math.max(width, height))) * 6;
+
+        // twinkle: base + sinusoidal
+        let t = now * 0.001 * s.twinkleSpeed + s.twinklePhase;
+        let alpha = s.freeze ? s.baseAlpha : (s.baseAlpha + Math.sin(t) * s.twinkleRange * 0.6);
+        alpha = Math.max(0, Math.min(1, alpha));
+
+        // glow gradient
+        const g = ctx.createRadialGradient(x, y, 0, x, y, 8 * s.size);
+        g.addColorStop(0, `rgba(${Math.floor(240 + s.hueShift)},${Math.floor(245 + s.hueShift)},255,${alpha})`);
+        g.addColorStop(0.45, `rgba(220,230,255,${alpha * 0.6})`);
+        g.addColorStop(1, `rgba(200,210,230,${alpha * 0.02})`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, s.size * 3.6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // center bright dot
+        ctx.fillStyle = `rgba(255,255,255,${Math.min(1, alpha * 1.2)})`;
+        ctx.beginPath();
+        ctx.arc(x, y, Math.max(0.28, s.size * 0.7), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // draw shooting stars
+      for (let i = shooting.length - 1; i >= 0; i--) {
+        const st = shooting[i];
+        st.life += dt;
+        const progress = st.life / st.maxLife;
+        st.x += st.vx * dt * 60;
+        st.y += st.vy * dt * 60;
+
+        ctx.save();
+        const grad = ctx.createLinearGradient(st.x, st.y, st.x - st.vx * 0.5, st.y - st.vy * 0.5);
+        const falloff = Math.max(0, 1 - progress);
+        grad.addColorStop(0, `rgba(255,255,255,${0.95 * falloff})`);
+        grad.addColorStop(0.6, `rgba(180,220,255,${0.25 * falloff})`);
+        grad.addColorStop(1, `rgba(180,220,255,0)`);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = Math.max(1, st.len / 60);
+        ctx.beginPath();
+        ctx.moveTo(st.x, st.y);
+        ctx.lineTo(st.x - st.vx * st.len * 0.03, st.y - st.vy * st.len * 0.03);
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(255,255,255,${0.9 * falloff})`;
+        ctx.beginPath();
+        ctx.arc(st.x - st.vx * 0.015, st.y - st.vy * 0.015, Math.max(1.6, st.len / 120), 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        if (st.life > st.maxLife) shooting.splice(i, 1);
+      }
+
+      // probabilistic spawn shooting star
+      const shootProb = prefersReduced ? CONFIG.SHOOTING_CHANCE * 0.25 : CONFIG.SHOOTING_CHANCE;
+      if (Math.random() < shootProb * (isMobile ? CONFIG.SHOOTING_ON_MOBILE_FACTOR : 1)) spawnShootingStar();
+
+      requestAnimationFrame(frame);
+    }
+
+    function init() {
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      last = performance.now();
+      // initial shooting stars (a couple)
+      if (!prefersReduced) {
+        setTimeout(spawnShootingStar, 600);
+        setTimeout(spawnShootingStar, 1400);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // resize & init stars
+    function resize() {
+      DPR = Math.max(1, window.devicePixelRatio || 1);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      cx = width / 2;
+      cy = height / 2;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      canvas.width = Math.round(width * DPR);
+      canvas.height = Math.round(height * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      initStars();
+    }
+
+    function initStars() {
+      const count = isMobile ? CONFIG.STARS_MOBILE : CONFIG.STARS_DESKTOP;
+      stars = new Array(count).fill(null).map(() => {
+        const maxR = Math.hypot(cx, cy);
+        const r = Math.sqrt(Math.random()) * maxR; // bias toward center a bit
+        return {
+          r,
+          theta: rand(0, Math.PI * 2),
+          size: rand(0.36, 2.2),
+          baseAlpha: rand(0.14, 0.9),
+          twinkleSpeed: rand(CONFIG.TWINKLE_SPEED_MIN, CONFIG.TWINKLE_SPEED_MAX),
+          twinklePhase: Math.random() * Math.PI * 2,
+          twinkleRange: rand(0.12, 0.78),
+          speedMul: rand(0.92, 1.12),
+          hueShift: rand(-18, 18),
+          freeze: Math.random() < 0.014
+        };
+      });
+    }
+
+    // start
+    init();
+
+    // expose for debug if needed
+    window.__starfield = { spawnShootingStar, stars, shooting };
+
+  })();
+
+  // display year
+  document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
