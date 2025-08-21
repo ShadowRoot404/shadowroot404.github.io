@@ -2,41 +2,23 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>ShadowRoot404 | Trang Web Cá Nhân</title>
+  <title>ShadowRoot404 | Trang Web Cá Nhân Của Hoàng Tiến Minh</title>
   <style>
-    /* Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
       height: 100vh;
       overflow: hidden;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      position: relative;
-      background: #000;
-    }
-
-    /* Nền sao chuyển động */
-    .stars {
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      background: url("https://i.ibb.co/7QpKsCX/stars.png") repeat;
-      animation: moveStars 300s linear infinite;
-      top: -50%;
-      left: -50%;
-      z-index: -1;
-    }
-
-    @keyframes moveStars {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
     }
 
     h1 {
       margin-top: 100px;
       font-size: 3rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
     }
 
     p {
@@ -51,6 +33,7 @@
       padding: 15px;
       border-radius: 12px;
       display: inline-block;
+      line-height: 1.8;
     }
 
     footer {
@@ -60,12 +43,47 @@
       font-size: 0.9rem;
       color: #aaa;
     }
+
+    /* 🌠 Ngôi sao tĩnh lấp lánh */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(1); }
+      to   { opacity: 1;   transform: scale(1.5); }
+    }
+
+    /* 💫 Sao băng */
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(-45deg, white, rgba(255,255,255,0));
+      opacity: 0.8;
+      transform: rotate(45deg);
+      animation: fall 2s linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-200px) translateX(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(800px) translateX(-800px) rotate(45deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Nền sao -->
-  <div class="stars"></div>
-
   <h1>🌌 Chào Mừng Đến Với Website Của ShadowRoot404</h1>
   <p>Website Cá Nhân Của Tôi - Nơi Để Chúng Ta Chia Sẻ Và Kết Nối Với Nhau :) 🚀</p>
 
@@ -76,5 +94,32 @@
   </div>
 
   <footer>© 2025 Shadowroot404. All rights reserved.</footer>
+
+  <script>
+    // 🌟 Tạo ngôi sao tĩnh lấp lánh
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(star);
+    }
+
+    // 💫 Hàm tạo sao băng
+    function createShootingStar() {
+      const star = document.createElement("div");
+      star.classList.add("shooting-star");
+      document.body.appendChild(star);
+
+      star.style.top = Math.random() * window.innerHeight * 0.5 + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+
+      setTimeout(() => { star.remove(); }, 2000);
+    }
+
+    // Tạo sao băng liên tục
+    setInterval(createShootingStar, 800);
+  </script>
 </body>
 </html>
