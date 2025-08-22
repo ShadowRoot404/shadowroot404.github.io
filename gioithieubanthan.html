@@ -3,31 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <title>Giới thiệu về tôi</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kinhtevadubao.vn/stores/news_dataimages/kinhtevadubaovn/042018/16/08/huan-luyen-phat-trien-ban-than-nghe-hot-cua-thoi-dai-28-.2135.jpg">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      color: white;
+      color: #fff;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      line-height: 1.8;
+      padding: 40px;
+      text-align: justify;
+      position: relative;
+      overflow-x: hidden;
     }
-    h1 { font-size: 2.5rem; }
-    p  { font-size: 1.2rem; line-height: 1.6; }
-    a {
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 30px;
       color: #4fc3f7;
-      text-decoration: none;
+      text-shadow: 0 0 10px #4fc3f7;
+    }
+
+    p {
       font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      white-space: pre-line;
+    }
+
+    b { color: #00ff37; }
+
+    /* Intro ở giữa */
+    .intro {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 1vh; /* nửa màn hình */
+      font-size: 1.3rem;
+    }
+
+    /* Sao lấp lánh */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    /* Sao băng */
+    .shooting-star {
+      position: absolute;
+      width: 3px;
+      height: 80px;
+      background: linear-gradient(white, transparent);
+      opacity: 0.8;
+      transform: rotate(45deg);
+      animation: shoot 3s linear infinite;
+    }
+
+    @keyframes shoot {
+      0% {
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-800px) translateY(800px) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <h1>🌟 Giới thiệu về tôi</h1>
-  <p>Xin chào, tôi là <b>Hoàng Tiến Minh (ShadowRoot404)</b>.  
-  Tôi yêu thích công nghệ, bảo mật và lập trình.  
-  Đây là nơi tôi chia sẻ về bản thân và đam mê của mình.</p>
 
-  <br>
-  <a href="index.html">⬅ Quay lại Trang chủ</a>
+  <!-- Intro giữa màn hình -->
+  <div class="intro">
+    <p>Xin chào, tôi là <b>Hoàng Tiến Minh</b> và tôi lấy biệt danh là <b>ShadowRoot404</b>.</p>
+  </div>
+  <p>
+Tôi sinh ngày 29 tháng 8 năm 2011, và lúc tôi code nên web này là 22 tháng 8, vậy chỉ còn 7 ngày nữa là đến sinh nhật tôi.  
+
+Tôi cũng chỉ là một học sinh bình thường mà thôi, nhưng niềm đam mê của tôi không giống như những đám bạn cùng trang lứa khác, niềm đam mê của đám bạn có thể là thể thao, game và những thứ khác. Nhưng tôi thì khác, niềm đam mê của tôi chỉ đơn giản là gắn bó với máy tính :) và công nghệ thông tin cùng với những thế giới trên internet và những dòng code trên máy tính, tôi cũng có sở thích mày mò và tìm hiểu những thứ mới lạ trên mạng, nhưng thứ tôi tìm hiểu không phải là những video "giết người" hay những video "đổi trụy" mà đám bạn tôi hay tìm ra và gửi lên nhóm lớp :), mà thứ tôi tìm hiểu lại là những dòng code và các kỹ thuật hack khác nhau.  
+
+Tôi đã biết tạo web nhưng khi tôi đưa web chính chủ của nhà trường tôi đang học đi :) thì đám bạn tôi lại không dám vào vì sợ tôi làm gì đó như hack cam và những thứ khác. Tôi còn có một niềm đam mê cũng lớn không kém, đó chính là niềm đam mê thiên văn học, những ngôi sao và vì tinh tú trên bầu trời :). Tôi học giỏi nhất môn toán và học ngu nhất môn tiếng anh, nhưng không hiểu sao khi giao tiếp với người nước ngoài trên dark web tôi lại nói tiếng anh như đúng rồi :), không hiểu tại sao nữa :v nhưng có thể sở thích của tôi đặt đúng chỗ có thể phát huy được những tiềm năng ẩn.  
+
+Tôi là một học sinh của trường THCS Mỹ Xá của tỉnh Nam Định cũ và sau đây là những giáo viên tôi đã từng học và tôi sẽ chia sẻ những trải nghiệm tôi có sau 3 năm học tại trường, bởi vì năm nay là năm cuối cấp rồi nên tôi chia sẻ trải nghiệm với mọi người, vào năm học tôi sẽ không có thời gian để tạo nên những thứ này nữa vì nó gần như là bất khả thì vì năm học lớp 9 sẽ rất khó khăn và thử thách để vào ngôi trường cấp 3 mong ước.  
+
+- Năm lớp 6 : Cô Lụa, phải nói cô là giáo viên rất thấu hiểu và có sự đồng cảm tốt nhất trong tất cả những giáo viên mà tôi từng học, cô có tính cách khá vui vẻ nhưng khi để cô căng thì cô cũng căng cực :).  
+- Năm lớp 7 : Cô Hải Anh, cô là một giáo viên trẻ và có tính cách khá hiền cũng như cô là một giáo viên dạy rất giỏi, nhưng thứ tôi ấn tượng nhất về cô là vẻ đẹp và ngoại hình của cô :), cô khá xinh đẹp :).  
+- Năm lớp 8 : Huế Già, xin lỗi vì đã nói như vậy, nhưng đây là một giáo viên tôi ghét nhất trong tất cả 8 năm học vừa qua từ tiểu học đến trung học, cô ấy không có khả năng dạy học gì cả, gần như là 100% phụ thuộc vào máy tính và giáo án có sẵn, gần như cô không có kiến thức gì cả, thậm chí không phải nói quá như kiến thức của cô còn thua cả học sinh. Cách giải quyết vấn đề trong và ngoài lớp của cô rất thiếu sự công bằng, gần như cô chỉ làm theo ý cô chứ không tuân theo luật lệ hay quy tắc gì cả và cô rất hay trù dập học sinh và nói xấu học sinh với những lớp khác. Phải nói đây là một những giáo viên tệ nhất tôi từng học, nếu được thì tôi muốn gửi đến nhà trường rằng hãy đuổi việc cô Huế đi vì gần như cô không có một chút kiến thức gì, lâu lâu tôi còn nhìn lén được cô dùng VietJack để giảng dạy bài cho học sinh.  
+- Năm lớp 9 : Thầy Mạnh, đây là giáo viên chủ nhiệm đầu tiên của tôi dạy môn toán trong suốt 8 năm học vừa qua :), thầy cũng còn trẻ nhưng thầy dạy khá giỏi, thầy cũng có tính cách khá bựa vì thầy còn trẻ, còn vào năm học thì chưa biết được :).  
+  </p>
+
+  <!-- Tạo sao random + sao băng -->
+  <script>
+    // Tạo random sao
+    for (let i = 0; i < 200; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      let size = Math.random() * 3 + "px";
+      star.style.width = size;
+      star.style.height = size;
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+      document.body.appendChild(star);
+    }
+
+    // Tạo sao băng random
+    setInterval(() => {
+      let shootingStar = document.createElement("div");
+      shootingStar.className = "shooting-star";
+      shootingStar.style.top = Math.random() * 50 + "%";
+      shootingStar.style.left = Math.random() * 100 + "%";
+      document.body.appendChild(shootingStar);
+
+      setTimeout(() => {
+        shootingStar.remove();
+      }, 3000);
+    }, 4000);
+  </script>
 </body>
 </html>
