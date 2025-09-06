@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc Mừng Sinh Nhật Lê Minh Anh</title>
+  <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/041/700/681/non_2x/eleven-flat-light-icon-vector.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+    .slideshow {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .card {
+      position: relative;
+      max-width: 700px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 30px 40px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    h1 {
+      font-size: 2.8em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: slowColorChange 15s ease infinite, glow 3s infinite alternate;
+      text-shadow: 0 0 15px rgba(255,255,255,0.7);
+    }
+    @keyframes slowColorChange {
+      0%, 100% { color: #FF3B3B; }
+      20% { color: #FFA500; }
+      40% { color: #FFFF00; }
+      60% { color: #00FF7F; }
+      80% { color: #1ED2FF; }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff4ecd; }
+      to   { text-shadow: 0 0 25px #fff, 0 0 50px #8affd2; }
+    }
+    .message {
+      font-size: 1.2em;
+      font-weight: 500;
+      line-height: 1.7;
+      background: linear-gradient(
+        270deg,
+        #FF3B3B, #FF6F3B, #FFA500, #FFD54F, #FFFF00,
+        #80FF80, #1ED2FF, #7A8BFF, #FF69B4, #FF3B3B
+      );
+      background-size: 1200% 1200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShine 12s ease-in-out infinite, sparkleText 2.5s ease-in-out infinite;
+    }
+    @keyframes textShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes sparkleText {
+      0%, 100% { text-shadow: 0 0 6px rgba(255,255,255,0.3); }
+      50% { text-shadow: 0 0 14px rgba(255,255,255,0.6), 0 0 28px rgba(255,255,255,0.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow" id="slideshow"></div>
+
+  <div class="card">
+    <h1>🎂 Chúc Mừng Sinh Nhật Lê Minh Anh 🎉</h1>
+    <div class="message">
+  🎉 Chúc mừng sinh nhật Minh Anh 🎂<br><br>
+  Vậy là năm nay Minh Anh chính thức bước sang tuổi 11,  
+  cũng là lúc bắt đầu một hành trình mới khi lên lớp 6.  
+  Tuổi mới chúc em sẽ học giỏi hơn, ngày càng tự tin,  
+  gặp nhiều bạn bè tốt và luôn giữ được nụ cười thật tươi nhé ^3^.<br><br>
+  Mong rằng những ngày đi học sắp tới sẽ tràn ngập niềm vui,  
+  và sinh nhật này sẽ trở thành một kỷ niệm thật đẹp trong lòng em 🌸✨<br>
+  
+
+  Và sau đây anh có bài thơ để tặng em<br>
+  Tháng chín vừa mở mùa vui,<br>
+  Ngày khai giảng đã ngập trời tiếng ca.<br>
+  Sinh nhật em đến thật là,<br>
+  Trăng non vừa sáng, ngân nga tiếng cười.<br>
+
+  Minh Anh tuổi mới rạng ngời,<br>
+  Tuổi mười một đẹp, rạng soi nắng vàng.  <br>
+  Bên Nhi bạn nhỏ dịu dàng,  <br>
+  Cùng nhau tung cánh, mơ màng ước mơ.<br>
+
+  Học hành chăm chỉ sớm trưa, <br> 
+  Tình bạn trong sáng như vừa hôm nay.  <br>
+  Mai sau dù ở phương này,  <br>
+  Kỷ niệm còn mãi, ngất ngây nụ cười 🌸✨
+</div>
+
+  </div>
+  <iframe id="bg-music" width="0" height="0"
+    src="https://www.youtube.com/embed/Wu8NeFXaoOc?autoplay=1&loop=1&playlist=Wu8NeFXaoOc"
+    frameborder="0" allow="autoplay">
+  </iframe>
+
+  <script>
+  const imageUrls = [
+    'https://m.yodycdn.com/blog/hinh-nen-thien-nhien-4k-yody-vn-4.jpg',
+    'https://mekoong.com/wp-content/uploads/2022/12/Hinh-nen-binh-minh-tren-mat-bien-4k-scaled.jpg',
+    'https://images.pexels.com/photos/261292/pexels-photo-261292.jpeg?cs=srgb&dl=pexels-pixabay-261292.jpg&fm=jpg',
+    'https://images.unsplash.com/photo-1503264116251-35a269479413',
+    'https://4kwallpapers.com/images/wallpapers/beach-sunset-seascape-evening-dusk-ocean-3840x2160-281.jpg',
+    'https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg',
+    'https://wallpapers.com/images/featured/4k-sunset-p2t3o7u08ujp7175.jpg',
+    'https://images8.alphacoders.com/117/1173565.jpg',
+    'https://images.unsplash.com/photo-1682939225364-3353202ceec0?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI0fHx8ZW58MHx8fHx8',
+    'https://pics.freeartbackgrounds.com/fullhd/Beautiful_Sea_Sunset_Background-1361.jpg',
+    'https://www.pixel4k.com/wp-content/uploads/2018/12/milky-way-coast-4k_1546279099.jpg',
+    'https://www.nyk.com/english/stories/01/04/__icsFiles/afieldfile/2025/01/24/tichuukai_1.jpg'
+  ];
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const shuffledImages = shuffle([...imageUrls]);
+  console.log("Thứ tự ảnh sau khi random:", shuffledImages);
+  const slideshow = document.getElementById('slideshow');
+  shuffledImages.forEach((url, i) => {
+    const div = document.createElement('div');
+    div.classList.add('slide');
+    if (i === 0) div.classList.add('active');
+    div.style.backgroundImage = `url('${url}')`;
+    slideshow.appendChild(div);
+  });
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 6000);
+</script>
+</body>
+</html>
